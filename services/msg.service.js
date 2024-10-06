@@ -1,6 +1,7 @@
 // import { dbService } from "./db.service"
 
 import { dbService } from "./db.service.js"
+import { logger } from "./logger.service.js"
 
 export async function addMsg(req, res) {
     const { body: msg } = req

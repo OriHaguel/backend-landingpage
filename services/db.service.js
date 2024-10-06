@@ -1,12 +1,14 @@
+
 import { MongoClient } from 'mongodb'
 
 import { config } from '../config/index.js'
 import { logger } from './logger.service.js'
 
 export const dbService = { getCollection }
+console.log('DB URL:', config.dbURL);
+console.log('DB Name:', config.dbName);
 
 var dbConn = null
-
 async function getCollection(collectionName) {
 	try {
 		const db = await _connect()
@@ -20,7 +22,7 @@ async function getCollection(collectionName) {
 
 async function _connect() {
 	if (dbConn) return dbConn
-    
+
 	try {
 		const client = await MongoClient.connect(config.dbURL)
 		return dbConn = client.db(config.dbName)
